@@ -92,15 +92,3 @@ function checkRequest(aTask, aToken) {
   }
 }
 
-function formatSheet(aSheet){
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(aSheet);
-  var range = sheet.getRange(SORT_DATA_RANGE);
-  range.sort(SORT_ORDER);
-  range.setHorizontalAlignment("left").setVerticalAlignment("top");
-  range.setWrapStrategy(SpreadsheetApp.WrapStrategy.CLIP); 
-  var lastRow = sheet.getLastRow();
-  sheet.setColumnWidths(1, 10, 100);
-  sheet.setRowHeights(1, lastRow, 100);
-  sheet.setFrozenRows(1);
-}
