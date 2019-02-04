@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<!--!
+
+   Filename: gist.7a = codeIndex.html (webapp)                                                      
+          _     _    
+         | |   | |   
+    ___  | |_  | | __
+   / __| | __| | |/ /
+  | (__  | |_  |   < 
+   \___|  \__| |_|\_\
+                                                     
+   CTK = Contacts Toolkit
+                                      
+   Built for performance; is responsive & small in file size.
+   Above means: all comments+whitespace removed. CS/JS minified.
+   Toolbox = Gulp, Plain JavaScript & more. Hosted on Google Cloud.
+
+   Unless otherwise noted, copyright 2018-2019 CTK, LLC. All rights reserved.
+   If questions, feedback or you would like to hire us: email info@contactstoolkit.com
+
+   NOTE 1: Code is NOT Open Source or Production Ready. It is working sample code.    
+   NOTE 2: For support or code questions search keywords @ Google or Stack Overflow.   
+
+-->
+
+<head>
+<base target="_top">
+
+<title>codeIndex</title>
+<?!= include('reset'); ?>
+<?!= include('post.reset'); ?>
+<?!= include('Stylesheet'); ?>
+</head>
+  
+<body>
+
+<div id="theList" class="divList">
+  <img src="<_a_URL_link>" height="110px" width="100px" alt="codeIndex" style="float: right;">
+  <div class="divTop">
+  <span id="rSize"></span> items &nbsp;
+  <input class="search" placeholder="Search" /> or sort by: 
+  <button class="sort" data-sort="Language">lang</button>
+  <button class="sort" data-sort="Name">name</button>
+  <button class="sort" data-sort="codeFunction">function</button>
+  <p>This is sample code for snippet library; data is from spreadsheet & limited to ~ 40 records.
+  <div class="noteTop">
+  If in doubt, test code @ <a href="https://jsbin.com" target="_blank">jsbin</a> 
+  or inspect <a href="https://medium.com/@justintulk/retrieving-javascript-objects-from-chrome-devtools-1d1cbd4c33da" target="_blank">makeGlobal</a>
+  via <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/" target="_blank">devTools</a>. 
+  If needed, convert sample to ES6 or ES5 via <a href="https://babeljs.io/en/repl.html" target="_blank">Babel</a>. 
+  </div>
+  
+  </div>  
+  <div id="searchCount"></div><p>&nbsp;</p>
+    <ul class="list"></ul>
+</div>
+
+<?!= include('list.min.js'); ?>
+
+<script>
+var X = 1;
+var COUNTER;
+var URL_BASE = '<_a_URL_link>';
+var UX_WORKING = 'working...';
+var UX_BOTTOM = '#uxBottomWorking';
+
+function createFragment(htmlStr) {
+    var fragment = document.createDocumentFragment();
+    var temp = document.createElement('div');
+    temp.innerHTML = htmlStr;
+    while (temp.firstChild) {
+        fragment.appendChild(temp.firstChild);
+    }
+    return fragment;
+};
+
+function getListData() {
+  var cacheBuster = Math.round(new Date().getTime() / 1000);
+  var aToken = 'helpers';
+  var urlSamples = URL_BASE+'?<_a_task_>&token='+aToken+'&cb='+cacheBuster+'&type=get';
+  var arrObj = jsonGet(urlSamples, success);
+  if (arrObj===0) { 
+    console.log('error');
+    return; 
+  } else { 
+    console.log('ok');
+    return
+  }
+};
+
+function jsonGet(url, success) {
+  var xhr = new XMLHttpRequest();
+  if (!('withCredentials' in xhr)) xhr = new XDomainRequest();
+  xhr.open('GET', url);
+  xhr.responseType = 'json';
+  xhr.onload = success;
+  xhr.onerror= function(e) { 
+    localStorage.setItem('h.gas', 'error');
+    var validDiv1 = document.querySelector(UX_BOTTOM);
+    if(validDiv1){
+      var text = validDiv1.textContent;
+      validDiv1.textContent = '';
+    }
+    var elNotice = document.querySelector('#theNotice');
+    elNotice.classList.remove("hide");
+    return 0;   
+    }
+  xhr.send();
+  return xhr;
+};
+
+function jsonUse(data) {
+  var recordSize = data.length;
+  if (data.length===undefined) {
+    console.log('error');
+    return;
+  } else {
+    var values = data;
+    var options = {
+      valueNames: [ <_a_list_of_values_in_array> ],
+      item: '<_html_for_a_list_of_values_>'
+    };
+    var userList = new List('theList', options, values);
+    var searchN = userList.on('searchComplete', function(){
+      var ux2 = document.getElementById('searchCount');
+      var text = ux2.textContent;
+      ux2.textContent = '';
+      var N = userList.update().matchingItems.length;
+      ux2.textContent = N;
+    });
+  }
+  return recordSize;
+};
+
+function success (request) {
+  var response = request.currentTarget.response || request.target.responseText;
+  var size = jsonUse(response);
+  var ux1 = document.getElementById('rSize');
+  ux1.appendChild(createFragment(size));
+  var uxDiv2 = document.querySelector(UX_BOTTOM);
+  if(uxDiv2){
+      var text = uxDiv2.textContent;
+      uxDiv2.textContent = '';
+    } else {
+    console.log('error');
+  }
+  return 
+};
+
+var uxDiv3 = document.querySelector(UX_BOTTOM);
+if(uxDiv3){
+    var text = uxDiv3.textContent;
+    uxDiv3.textContent = UX_WORKING;
+  } else {
+    console.log('error');
+}
+
+var theData = getListData();
+</script>
+
+</body>
+</html>
