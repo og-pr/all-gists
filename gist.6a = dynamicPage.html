@@ -1,0 +1,59 @@
+<!--!
+
+   Filename: gist.6a = dynamicPage.html                                                       
+          _     _    
+         | |   | |   
+    ___  | |_  | | __
+   / __| | __| | |/ /
+  | (__  | |_  |   < 
+   \___|  \__| |_|\_\
+                                                     
+   CTK = Contacts Toolkit
+                                      
+   Built for performance; is responsive & small in file size.
+   Above means: all comments+whitespace removed. CS/JS minified.
+   Toolbox = Gulp, Plain JavaScript & more. Hosted on Google Cloud.
+
+   Unless otherwise noted, copyright 2018-2019 CTK, LLC. All rights reserved.
+   If questions, feedback or you would like to hire us: email info@contactstoolkit.com
+
+-->
+
+<blog>
+  
+  <!-- NOTE: Because GitHub uses JS to process Gists, the JS template below may be dis colored -->
+  
+  <section id="aHero" class="leading hero">
+    <script id="template_aHero" type="text/x-dot-template">
+        <img class="text-centered" src="../../images/not_supported.svg" 
+        srcset="{{=dot.baseurl}}{{=dot.articlephoto}}_s320.jpg 320w, {{=dot.baseurl}}{{=dot.articlephoto}}_s414.jpg 414w,
+        {{=dot.baseurl}}{{=dot.articlephoto}}_s768.jpg 768w, {{=dot.baseurl}}{{=dot.articlephoto}}_s900.jpg 900w,
+        {{=dot.baseurl}}{{=dot.articlephoto}}_s1366.jpg 1366w" 
+        sizes="(max-width: 321px) 320px,
+        (max-width: 415px) 414px,
+        (max-width: 769px) 768px,
+        (max-width: 901px) 900px,
+        (max-width: 1367px) 1366px"
+        alt="{{=dot.imagealt}}" onerror="this.className='imgError text-centered'; this.src='../../images/not_available.svg';"/>
+    </script>
+  </section>
+
+  <div id="aHeading" class="featuresCenter">
+    <div id="theNotice" class="showError hide">Error: Network error. Please try again later. Thanks</div>
+    <script id="template_aHeading" type="text/x-dot-template">
+        <h1>{{=dot.title}}</h1>
+        <h2>{{=dot.headline}}</h2>
+    </script>
+  </div>
+
+  <section id="aContent" class="">
+   <div class="">
+    <script id="template_aContent" type="text/x-dot-template">
+    {{ for(var n in dot) { }}
+        <p>{{=dot[n]["content"] }}</p>
+    {{ } }}
+    </script>
+   </div>
+  </section>
+
+</blog>

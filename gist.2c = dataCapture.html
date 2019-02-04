@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<!-- ************************************************************* -->
+
+<!--!
+
+   Filename: gist.2c = dataCapture.html                                                       
+          _     _    
+         | |   | |   
+    ___  | |_  | | __
+   / __| | __| | |/ /
+  | (__  | |_  |   < 
+   \___|  \__| |_|\_\
+                                                     
+   CTK = Contacts Toolkit
+                                      
+   Built for performance; is responsive & small in file size.
+   Above means: all comments+whitespace removed. CS/JS minified.
+   Toolbox = Gulp, Plain JavaScript & more. Hosted on Google Cloud.
+
+   Unless otherwise noted, copyright 2018-2019 CTK, LLC. All rights reserved.
+   If questions, feedback or you would like to hire us: email info@contactstoolkit.com
+
+-->
+
+<!-- ************************************************************* -->
+
+<html lang="en" class="no-js">
+<head>
+
+/* inline_js15_C */
+
+<!-- ************************************************************* -->
+
+<title>Demo</title>
+
+<meta name="description" content="Demo landing page client side form to spreadsheet using javascript and google apps script">
+
+<meta name="keywords" content="small business website, web page development, workflow crm, sales funnel">
+
+<!-- ************************************************************* -->
+
+<script>console.clear();</script>
+
+<!-- ************************************************************* -->
+
+<noscript><meta http-equiv='refresh' content='0; url=https://contactstoolkit.com/error/no-js.html' /></noscript>
+
+<!-- ************************************************************* -->
+
+<script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
+
+<!-- ************************************************************* -->
+
+<!-- h.js7 geofence.TOP -->
+<script type="text/javascript">
+console.log('loading js7_top');
+function lsTest(){try{return localStorage.setItem("h.storage","yes_localStorage"),!0}catch(e){return console.log("check ... NO localstorage"),!1}}function getJson(e,t,o){var r=new XMLHttpRequest;return"withCredentials"in r||(r=new XDomainRequest),r.open("GET",t),r.responseType="json",r.onload=o,r.onerror=function(t){return"ipdata"===e?(console.log("Error getting "+e),void localStorage.setItem("h.ipdata","error")):"geobyte"===e?(console.log("Error getting "+e),void localStorage.setItem("h.geobyte","error")):void 0},r.send(),r}function success1(e){var t=e.currentTarget.response||e.target.responseText;localStorage.setItem("h.ipdata",t.country_code)}function success2(e){var t=e.currentTarget.response||e.target.responseText;localStorage.setItem("h.geobyte",t.geobytesinternet)}lsTest(),url1="https://api.ipdata.co/?api-key=<key_removed>",url2="https://secure.geobytes.com/getcitydetails?key=<key_removed>";var geo1A=localStorage.getItem("h.visit");if(geo1A)localStorage.setItem("h.visit","repeat_visit");else{localStorage.setItem("h.visit","new_visit"),getJson("ipdata",url1,success1);var geo2A=localStorage.getItem("h.ipdata");"error"===geo2A&&getJson("geobyte",url2,success2)}
+</script>
+
+<!-- ************************************************************* -->
+
+/* inline_js15_A */
+
+<script type="text/javascript">
+console.log('loading js15_B');
+/* inline_js15_B */
+</script>
+
+<!-- ************************************************************* -->
+
+<script type="text/javascript">
+console.log('loading js1');
+/* inline_js1 */
+</script>
+
+<!-- ************************************************************* -->
+
+<script type="text/javascript">
+console.log('loading pre.min.js');
+/* inline_h.preJs */
+</script>
+
+<!-- ************************************************************* -->
+
+<style media="all">
+/* inline_cssReset */
+</style>
+
+<style media="all">
+/* inline_cssPostReset */
+</style>
+
+<style media="all">
+/* inline_cssCommon */
+</style>
+
+<style media="all">
+/* inline_cssHomeStyle */
+</style>
+
+<style media="all">
+/* inline_cssHomeQueries */
+</style>
+
+</head>
+
+<!-- ************************************************************* -->
+
+<body>
+
+<!-- ************************************************************* -->
+
+<div id="divDeny" class="hide">
+<center><h3>Access denied<p>If you beleive this is error, reload and try again.<p>Thanks !</h3></center>
+</div>
+
+<!-- ************************************************************* -->
+
+<div id="divMain" class="hide bodyImage">
+
+<header>
+</header>
+
+<!-- ************************************************************* -->
+
+<main>
+    <div class="mainLeft"> &nbsp; </div> 
+
+    <div class="mainCenter"> 
+
+    <div class="r2m"> 
+    <img class="r2m-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="../../images/ctk-we-love-small-business.png">
+    <p class="omitMobile">...and understand how complicated some tasks can get.
+
+    <p> If you are using Google's G Suite 
+    (free or paid Gmail, Docs, or Sheets) and need help setting up an email sales funnel, a "form to spreadsheet" (like this working demo), or other custom workflow... 
+    
+    <p>Give us a call @ 415-548-1775, send a form-request below, or email info@contactstoolkit.com for help.
+
+<!-- ************************************************************* -->
+
+  <div class="h-cta">
+    <form class="cta1 pure-form" id="form1">
+          <input type="hidden" name="userPage" id="userpage" value="home.html"><!-- each form has unique hidden value -->
+          <input type="email" placeholder="I'm ready. Email me!" name="Email" id="email" required>
+          <button class="cta1-button pure-button pure-button-primary" type="submit" id="cta1-bottom" data-submit="...Sending">Go!</button>
+    </form>
+
+    <div class="formRecording1"></div>
+    <div class="formFeedback1" id='error1'></div>  
+  </div>
+</div>
+</div>
+<div class="mainRight"> &nbsp; </div>
+
+</main>
+
+<footer class="altFooter1"> DEMO - this is working code: form-to-sheet - DEMO <br><p>© 2019 CTK LLC </footer>
+
+</div>
+
+<!-- ************************************************************* -->
+
+<script type="text/javascript">
+console.log('loading js7_bottom');
+function checkAccess(){var e=["CA","GB","UK","US","error"],o=localStorage.getItem("h.ipdata"),t=localStorage.getItem("h.geobyte"),c=e.indexOf(o),r=e.indexOf(t);if(-1==c&&-1==r)return console.log("deny"),void showDeny();console.log("allow"),showMain()}function showMain(){document.getElementById("divMain").classList.remove("hide")}function showDeny(){document.getElementById("divDeny").classList.remove("hide")}var geo3A=localStorage.getItem("h.ipdata"),geo3B=localStorage.getItem("h.geobyte");"error"===geo3A&&"error"===geo3B?(console.log("check ... error ipdata_service"),console.log("check ... error geobyte_service"),showMain()):setTimeout(checkAccess,555);
+</script>
+
+<!-- ************************************************************* -->
+
+<script type="text/javascript"> 
+console.log('loading js22');
+(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)
+</script>
+
+<!-- ************************************************************* -->
+
+<script type="text/javascript"> 
+console.log('head.load config');
+head.load( 
+'../../js/post.demo_lp1.min.js' // gist.2d
+); 
+</script>
+
+<!-- ************************************************************* -->
+
+<script>
+console.log('loading js30');
+  (function(a,b,c){var d=a.history,e=document,f=navigator||{},g=localStorage,
+  h=encodeURIComponent,i=d.pushState,k=function(){return Math.random().toString(36)},
+  l=function(){return g.cid||(g.cid=k()),g.cid},m=function(r){var s=[];for(var t in r)
+  r.hasOwnProperty(t)&&void 0!==r[t]&&s.push(h(t)+"="+h(r[t]));return s.join("&")},
+  n=function(r,s,t,u,v,w,x){var z="https://www.google-analytics.com/collect",
+  A=m({v:"1",ds:"web",aip:c.anonymizeIp?1:void 0,tid:b,cid:l(),t:r||"pageview",
+  sd:c.colorDepth&&screen.colorDepth?screen.colorDepth+"-bits":void 0,dr:e.referrer||
+  void 0,dt:e.title,dl:e.location.origin+e.location.pathname+e.location.search,ul:c.language?
+  (f.language||"").toLowerCase():void 0,de:c.characterSet?e.characterSet:void 0,
+  sr:c.screenSize?(a.screen||{}).width+"x"+(a.screen||{}).height:void 0,vp:c.screenSize&&
+  a.visualViewport?(a.visualViewport||{}).width+"x"+(a.visualViewport||{}).height:void 0,
+  ec:s||void 0,ea:t||void 0,el:u||void 0,ev:v||void 0,exd:w||void 0,exf:"undefined"!=typeof x&&
+  !1==!!x?0:void 0});if(f.sendBeacon)f.sendBeacon(z,A);else{var y=new XMLHttpRequest;
+  y.open("POST",z,!0),y.send(A)}};d.pushState=function(r){return"function"==typeof d.onpushstate&&
+  d.onpushstate({state:r}),setTimeout(n,c.delay||10),i.apply(d,arguments)},n(),
+  a.ma={trackEvent:function o(r,s,t,u){return n("event",r,s,t,u)},
+  trackException:function q(r,s){return n("exception",null,null,null,null,r,s)}}})
+  (window,"<key_removed>",{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});
+</script>
+
+<!-- ************************************************************* -->
+
+<script type="text/javascript" defer="defer">
+console.log('loading js23');
+function deferImages(){for(var t=document.getElementsByTagName("img"),e=0;e<t.length;e++)t[e].getAttribute("data-src")&&t[e].setAttribute("src",t[e].getAttribute("data-src"))}window.onload=deferImages();
+</script>
+
+</body>
+</html>

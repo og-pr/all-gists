@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<!--!
+
+   Filename: gist.5b = randomImage.html                                                       
+          _     _    
+         | |   | |   
+    ___  | |_  | | __
+   / __| | __| | |/ /
+  | (__  | |_  |   < 
+   \___|  \__| |_|\_\
+                                                     
+   CTK = Contacts Toolkit
+                                      
+   Built for performance; is responsive & small in file size.
+   Above means: all comments+whitespace removed. CS/JS minified.
+   Toolbox = Gulp, Plain JavaScript & more. Hosted on Google Cloud.
+
+   Unless otherwise noted, copyright 2018-2019 CTK, LLC. All rights reserved.
+   If questions, feedback or you would like to hire us: email info@contactstoolkit.com
+
+-->
+
+<html>
+<head>
+<base target="_top">
+
+<style>
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.box {
+  max-width: 100% !important;
+  object-fit: cover !important;
+  height: auto;
+}
+
+.centerBlock {
+  margin-left: auto;
+  margin-right: auto ; 
+}
+
+.textSmall {
+  font-size: 77%;
+  font-family: Arial, Helvetica, sans-serif;  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center; 
+  display: block;
+}
+</style>
+</head>
+
+<body>
+<center><div id="uxTop" class="textSmall">working...</div></center><!-- text will be removed -->  
+<div id="output" class="box"></div>
+<center><div id="uxBottom" class="textSmall"></div></center><!-- text will be added -->
+
+<script>
+var data = google.script.run.withSuccessHandler(function (data) {
+  var UX_TOP = 'uxTop'; 
+  var UX_BOTTOM = 'uxBottom'; 
+  var UX_WORKING = 'working...';
+  var validDiv1 = document.getElementById(UX_TOP);
+  if(validDiv1){
+    var text = validDiv1.textContent;
+    validDiv1.textContent = '';
+  }
+  var validDiv2 = document.getElementById('output');
+  if(validDiv2){
+    var img = document.createElement("img");
+    img.className = 'center';
+    var imgUrl = '<link_removed>='+data; 
+    img.src = imgUrl;
+    img.onload = function () {
+      validDiv2.appendChild(img);   
+    }
+  } 
+  var validDiv3 = document.getElementById(UX_BOTTOM);
+  if(validDiv3){
+    var newLink = document.createElement('a');
+    newLink.innerHTML = 'Fair Use notice';
+    newLink.setAttribute('class', 'textSmall');
+    newLink.setAttribute('target', '_blank');
+    newLink.setAttribute('href', '<link_removed>');
+    document.body.appendChild(newLink);
+  }
+}).psRandomSet_get();
+</script>
+
+</body>
+</html>

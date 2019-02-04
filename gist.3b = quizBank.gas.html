@@ -1,0 +1,46 @@
+//* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - */
+//*                                                                                          */
+//*    Filename: gist.3b = quizBank.gas                                                       */
+//*                                                                                          */
+//*    Copyright (c) 2018-2019 Otto Grajeda. All rights reserved.                            */
+//*    Contact info: ottograjeda@gmail.com. See additional disclaimers below.                */
+//*                                                                                          */
+//*    NOTE 1: Code is NOT Open Source or Production Ready. It is working sample code.       */
+//*    NOTE 2: For support or code questions search keywords @ Google or Stack Overflow.     */
+//*                                                                                          */
+//* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - */
+//*                                                                                          */
+//*    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND       */
+//*    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED         */
+//*    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE                */
+//*    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR       */
+//*    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES        */
+//*    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;          */
+//*    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON        */
+//*    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT               */
+//*    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS         */
+//*    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          */
+//*                                                                                          */
+//* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - */
+
+var ss = SpreadsheetApp.openById('<a_google_spreadsheet>'); 
+var sheet = ss.getSheetByName('testResults');
+
+function doGet() {
+  return HtmlService.createTemplateFromFile('quizBank').evaluate() 
+      .setTitle('quizBank')
+      .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+}
+
+function qDetails(num, question, status) {  
+  var qNum = num;
+  var qTitle = question;
+  var qStatus = status;
+  var d = new Date(); 
+  sheet.appendRow( [d, qNum, qTitle, qStatus] );
+}
+
+function mouseOffPage() {  
+  var d = new Date(); 
+  sheet.appendRow( [d, 'mouse off page = cheating ?'] );
+}
