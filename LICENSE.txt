@@ -2,7 +2,7 @@
 //*                                                                                          */
 //*    LICENSE for ALL GISTS                                                                 */
 //*                                                                                          */
-//*    Copyright (c) 2018-2019 Otto Grajeda. All rights reserved.                            */
+//*    Copyright (c) 2018-2020 Otto Grajeda. All rights reserved.                            */
 //*    Contact info: ottograjeda@gmail.com. See additional disclaimers below.                */
 //*                                                                                          */
 //*    NOTE 1: Code is NOT Open Source or Production Ready. It is working sample code.       */
